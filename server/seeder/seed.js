@@ -6,17 +6,18 @@ async function seedDB() {
   const uri =
     'mongodb+srv://lauramars85:goldenshoe@cluster0.qz9z6.mongodb.net/golden-shoe-demo?retryWrites=true&w=majority';
 
-  const dbName = 'golden-shoe-demo';
+  // const dbName = 'golden-shoe-demo';
 
   const client = new MongoClient(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
+
   try {
     await client.connect();
     console.log('Connected correctly to server');
 
-    const db = client.db(dbName);
+    const db = client.db('golden-shoe-demo');
     // const productsCollection = db.collection('products');
 
     const productsCollection = client.db('categories').collection('products');
@@ -49,6 +50,8 @@ async function seedDB() {
     client.close();
   } catch (err) {
     console.log(err);
+  } finally {
+    return;
   }
 }
 
