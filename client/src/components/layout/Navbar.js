@@ -9,7 +9,7 @@ const Navbar = () => {
       role='navigation'
     >
       <div className='container-fluid'>
-        <a className='navbar-brand' to='/'>
+        <Link className='navbar-brand' to='/'>
           <img
             src={GoldenShoeLogo}
             alt='logo'
@@ -18,7 +18,7 @@ const Navbar = () => {
             className='d-inline-block align-text-center'
           />
           Golden Shoe
-        </a>
+        </Link>
 
         <button
           className='navbar-toggler'
@@ -34,13 +34,9 @@ const Navbar = () => {
 
         <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
           <div className='navbar-nav'>
-            <a
-              className='nav-link active'
-              aria-current='page'
-              href='women.html'
-            >
+            <Link className='nav-link active' aria-current='page' to='/women'>
               Women
-            </a>
+            </Link>
             <a className='nav-link' href='#'>
               Men
             </a>
