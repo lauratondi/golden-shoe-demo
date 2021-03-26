@@ -20,6 +20,7 @@ async function seedDB() {
     const productsMenCollection = client.db('men').collection('products');
     const productsWomenCollection = client.db('women').collection('products');
 
+    const gender = ['women', 'men'];
     const types = ['Sport', 'Casual', 'Sneaker', 'Heels', 'Flat'];
 
     let products = [];
@@ -31,6 +32,7 @@ async function seedDB() {
         color: faker.commerce.color(),
         material: faker.commerce.productMaterial(),
         type: types[Math.floor(Math.random() * types.length)],
+        // gender: gender[Math.floor(Math.random() * gender.length)],
         description: faker.lorem.paragraph(),
         image: ' http://placeimg.com/640/480/shoes',
       };
@@ -40,7 +42,7 @@ async function seedDB() {
     }
     productsMenCollection.insertMany(products);
     productsWomenCollection.insertMany(products);
-    console.log('Databae seeded');
+    console.log('Database seeded');
     client.close();
   } catch (err) {
     console.log(err);

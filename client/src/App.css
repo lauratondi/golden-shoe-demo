@@ -1,0 +1,33 @@
+:root {
+  --primary-color: #39a2a0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  overflow-x: hidden;
+}
+
+p {
+  margin-bottom: 0 !important;
+}
+
+/* ----------NAVBAR---------------- */
+nav {
+  background-color: var(--primary-color);
+}
+
+.navbar-collapse {
+  flex-grow: unset !important;
+}
+.fa-lg {
+  line-height: normal;
+}
