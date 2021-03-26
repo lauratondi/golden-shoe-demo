@@ -14,6 +14,9 @@ const ProductSchema = new Schema({
   material: {
     type: String,
   },
+  size: {
+    type: String,
+  },
   type: {
     type: String,
   },

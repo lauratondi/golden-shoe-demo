@@ -8,7 +8,7 @@ const db = require('./config').mongoURI;
 // I initialize the app with Express
 const app = express();
 
-// Test
+// // Test
 app.get('/', (req, res) => res.send('API Running'));
 
 // Connect to Mongo

@@ -37,20 +37,20 @@ const Navbar = () => {
             <Link className='nav-link active' aria-current='page' to='/women'>
               Women
             </Link>
-            <a className='nav-link' href='#'>
+            <a className='nav-link' to='#'>
               Men
             </a>
-            <a className='nav-link' href='#'>
+            <a className='nav-link' to='#'>
               About
             </a>
-            <a className='nav-link' href='#'>
+            <a className='nav-link' to='#'>
               Contact
             </a>
-            <a className='nav-link' href='#'>
+            <a className='nav-link' to='#'>
               {' '}
               <i className='fas fa-heart fa-lg'></i>
             </a>
-            <a className='nav-link' href='#'>
+            <a className='nav-link' to='#'>
               <i className='fas fa-shopping-bag fa-lg'></i>
             </a>
           </div>

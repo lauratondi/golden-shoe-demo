@@ -17,6 +17,7 @@ async function seedDB() {
 
     const db = client.db('golden-shoe-demo');
 
+    // const productCollection = client.db('products').collection('products');
     const productsMenCollection = client.db('products').collection('men');
     const productsWomenCollection = client.db('products').collection('women');
 
@@ -31,6 +32,7 @@ async function seedDB() {
         color: faker.commerce.color(),
         material: faker.commerce.productMaterial(),
         size: Math.floor(Math.random() * (49 - 35)) + 35,
+
         type: types[Math.floor(Math.random() * types.length)],
         description: faker.lorem.paragraph(),
         image: ' http://placeimg.com/640/480/shoes',
@@ -41,6 +43,7 @@ async function seedDB() {
     }
     productsMenCollection.insertMany(products);
     productsWomenCollection.insertMany(products);
+    // productCollection.insertMany(products);
     console.log('Database seeded');
     client.close();
   } catch (err) {
