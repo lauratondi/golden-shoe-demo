@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import Products from '../products/Products';
 import Spinner from '../layout/Spinner';
 import { connect } from 'react-redux';
 
@@ -12,6 +13,7 @@ const Landing = ({ loading }) => {
       <div class='text-page'>
         <h5>New Collections</h5>
       </div>
+      <Products />
     </Fragment>
   );
 };

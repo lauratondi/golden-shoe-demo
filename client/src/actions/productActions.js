@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SET_LOADING, GET_PRODUCTS } from './types';
+import { SET_LOADING, GET_PRODUCTS, GET_PRODUCT } from './types';
 
 // GET ALL PRODUCTS
 export const getProducts = () => async (dispatch) => {
@@ -15,13 +15,30 @@ export const getProducts = () => async (dispatch) => {
       loading: false,
     });
   } catch (err) {
-    // dispatch({
-    //   payload: { status: err.response.status },
-    // });
-    console.log('No getting prodcts');
+    dispatch({
+      payload: { status: err.response.status },
+    });
   }
 };
 
+// GET single product
+export const getProduct = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`api/products/${id}`);
+
+    console.log(res.data);
+
+    dispatch({
+      type: GET_PRODUCT,
+      payload: res.data,
+      loading: false,
+    });
+  } catch (err) {
+    dispatch({
+      payload: { status: err.response.status },
+    });
+  }
+};
 // Set Loading
 export const setLoading = () => async (dispatch) => {
   dispatch({
