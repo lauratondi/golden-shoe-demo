@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { SET_LOADING, GET_PRODUCTS, GET_PRODUCT } from './types';
+import { SET_LOADING, GET_PRODUCTS, GET_PRODUCT, PRODUCT_ERROR } from './types';
 
 // GET ALL PRODUCTS
 export const getProducts = () => async (dispatch) => {
   setLoading(true);
   try {
-    const res = await axios.get('/api/products');
+    const res = await axios.get('/api/products/');
 
     console.log(res.data);
 
@@ -15,8 +15,10 @@ export const getProducts = () => async (dispatch) => {
       loading: false,
     });
   } catch (err) {
+    console.log('Error');
     dispatch({
-      payload: { status: err.response.status },
+      type: PRODUCT_ERROR,
+      payload: err.response,
     });
   }
 };

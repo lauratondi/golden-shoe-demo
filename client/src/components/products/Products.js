@@ -1,29 +1,33 @@
-import React, { useEffect, Fragment, Profiler } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getProducts } from '../../actions/productActions';
+import { getProducts, setLoading } from '../../actions/productActions';
 import Spinner from '../layout/Spinner';
 import ProductItem from '../products/ProductItem';
 
-const Products = ({ getProducts, products, loading }) => {
+const Products = ({ getProducts, setLoading, products, loading }) => {
   useEffect(() => {
     getProducts();
+    setLoading();
     // eslint-disable-next-line
-  }, []);
+  }, [getProducts]);
 
-  if (loading) {
-    return <Spinner />;
-  } else {
-    return (
-      <Fragment>
-        <div>
-          {products.length > 0
-            ? products.map((product, index) => (
+  return (
+    <Fragment>
+      {loading && products !== null ? (
+        <p>Loading...</p>
+      ) : (
+        <Fragment>
+          <div>
+            {products.length > 0 ? (
+              products.map((product, index) => (
                 <ProductItem key={index} product={product} />
               ))
-            : null}
-        </div>
-        {/* <div
+            ) : (
+              <p>No product found</p>
+            )}
+          </div>
+          {/* <div
           id='carouselExampleCaptions'
           class='carousel slide'
           data-bs-ride='carousel'
@@ -86,21 +90,25 @@ const Products = ({ getProducts, products, loading }) => {
             <span class='visually-hidden'>Next</span>
           </button>
         </div> */}
-      </Fragment>
-    );
-  }
+        </Fragment>
+      )}
+    </Fragment>
+  );
 };
 
 Products.propTypes = {
   getProducts: PropTypes.func.isRequired,
+  setLoading: PropTypes.func.isRequired,
   products: PropTypes.object.isRequired,
   loading: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => ({
   products: state.products.products,
+  loading: state.products.loading,
 });
 
 export default connect(mapStateToProps, {
   getProducts,
+  setLoading,
 })(Products);

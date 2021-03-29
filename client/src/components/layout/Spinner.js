@@ -11,7 +11,6 @@ const Spinner = () => (
         width: '200px',
         margin: 'auto',
         display: 'block',
-        backgroundColor: '$grey-color',
       }}
     />
   </Fragment>

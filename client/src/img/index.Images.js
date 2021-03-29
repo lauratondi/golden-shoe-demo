@@ -1,3 +1,3 @@
-export const spinner = require('./spinner.gif');
+export const spinner = require('../img/spinner.gif');
 
 export default spinner;

@@ -1,9 +1,15 @@
-import { SET_LOADING, GET_PRODUCTS, GET_PRODUCT } from '../actions/types';
+import {
+  SET_LOADING,
+  GET_PRODUCTS,
+  GET_PRODUCT,
+  PRODUCT_ERROR,
+} from '../actions/types';
 
 const initialState = {
-  products: [],
+  products: {},
   product: {},
   loading: true,
+  error: {},
 };
 // eslint-disable-next-line
 export default (state = initialState, action) => {
@@ -18,6 +24,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         product: action.payload,
+        loading: false,
+      };
+    case PRODUCT_ERROR:
+      return {
+        ...state,
+        products: action.payload,
         loading: false,
       };
     case SET_LOADING:

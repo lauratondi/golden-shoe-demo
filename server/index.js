@@ -1,8 +1,10 @@
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
 const seeder = require('./seeder/seed');
 // DB configuration and interaction with our MongoDb database
 const mongoose = require('mongoose');
+
 const db = require('./config').mongoURI;
 
 // I initialize the app with Express
@@ -10,6 +12,7 @@ const app = express();
 
 // // Test
 app.get('/', (req, res) => res.send('API Running'));
+// app.get('/api/products', (req, res) => res.send('API Running'));
 
 // Connect to Mongo
 mongoose
@@ -21,6 +24,7 @@ mongoose
   .then(() => console.log('Connection to Mongo DB estabilished'))
   .catch((err) => console.log(err));
 
+// Init Middleware
 app.use(express.json({ extended: false }));
 
 // Define routes

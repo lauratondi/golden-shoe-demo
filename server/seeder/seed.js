@@ -17,9 +17,9 @@ async function seedDB() {
 
     const db = client.db('golden-shoe-demo');
 
-    // const productCollection = client.db('products').collection('products');
-    const productsMenCollection = client.db('products').collection('men');
-    const productsWomenCollection = client.db('products').collection('women');
+    const productCollection = client.db('inventory').collection('products');
+    // const productsMenCollection = client.db('products').collection('men');
+    // const productsWomenCollection = client.db('products').collection('women');
 
     const types = ['Sport', 'Casual', 'Sneaker', 'Heels', 'Flat'];
 
@@ -41,9 +41,9 @@ async function seedDB() {
 
       console.log(newProduct.size);
     }
-    productsMenCollection.insertMany(products);
-    productsWomenCollection.insertMany(products);
-    // productCollection.insertMany(products);
+    // productsMenCollection.insertMany(products);
+    // productsWomenCollection.insertMany(products);
+    productCollection.insertMany(products);
     console.log('Database seeded');
     client.close();
   } catch (err) {
@@ -51,4 +51,4 @@ async function seedDB() {
   }
 }
 
-seedDB();
+// seedDB();
