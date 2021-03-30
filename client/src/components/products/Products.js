@@ -1,7 +1,9 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getProducts, setLoading } from '../../actions/productActions';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 import Spinner from '../layout/Spinner';
 import ProductItem from '../products/ProductItem';
 
@@ -12,84 +14,42 @@ const Products = ({ getProducts, setLoading, products, loading }) => {
     // eslint-disable-next-line
   }, [getProducts]);
 
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+      slidesToSlide: 3, // optional, default to 1.
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+      slidesToSlide: 2, // optional, default to 1.
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1, // optional, default to 1.
+    },
+  };
+
   return (
     <Fragment>
       {loading && products !== null ? (
         <p>Loading...</p>
       ) : (
         <Fragment>
-          <div>
-            {products.length > 0 ? (
-              products.map((product, index) => (
-                <ProductItem key={index} product={product} />
-              ))
-            ) : (
-              <p>No product found</p>
-            )}
-          </div>
-          {/* <div
-          id='carouselExampleCaptions'
-          class='carousel slide'
-          data-bs-ride='carousel'
-        >
-          <div class='carousel-indicators'>
-            <button
-              type='button'
-              data-bs-target='#carouselExampleCaptions'
-              data-bs-slide-to='0'
-              class='active'
-              aria-current='true'
-              aria-label='Slide 1'
-            ></button>
-            <button
-              type='button'
-              data-bs-target='#carouselExampleCaptions'
-              data-bs-slide-to='1'
-              aria-label='Slide 2'
-            ></button>
-            <button
-              type='button'
-              data-bs-target='#carouselExampleCaptions'
-              data-bs-slide-to='2'
-              aria-label='Slide 3'
-            ></button>
-          </div>
-          <div class='carousel-inner'>
-            
-
-            <div class='carousel-item active'>
-              <img
-                src='./img/pexels-dương-nhân-3155234.jpg'
-                class='d-block w-100'
-                alt='...'
-              />
-              <div class='carousel-caption d-md-block'>
-                <p>
-                  <b>Flat</b>
-                </p>
-                <p>€ 150</p>
-              </div>
-            </div>
-          </div>
-          <button
-            class='carousel-control-prev'
-            type='button'
-            data-bs-target='#carouselExampleCaptions'
-            data-bs-slide='prev'
-          >
-            <span class='carousel-control-prev-icon' aria-hidden='true'></span>
-            <span class='visually-hidden'>Previous</span>
-          </button>
-          <button
-            class='carousel-control-next'
-            type='button'
-            data-bs-target='#carouselExampleCaptions'
-            data-bs-slide='next'
-          >
-            <span class='carousel-control-next-icon' aria-hidden='true'></span>
-            <span class='visually-hidden'>Next</span>
-          </button>
-        </div> */}
+          <Carousel responsive={responsive}>
+            {products.length > 0
+              ? products.map((product, index) => (
+                  <ProductItem key={index} product={product} />
+                ))
+              : null}
+          </Carousel>
         </Fragment>
       )}
     </Fragment>

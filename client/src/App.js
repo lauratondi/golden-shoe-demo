@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
+import 'react-multi-carousel/lib/styles.css';
 import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
 // import Products from './components/products/Products';
