@@ -2,11 +2,13 @@ import {
   SET_LOADING,
   GET_PRODUCTS,
   GET_PRODUCT,
+  GET_WOMENPRODUCTS,
   PRODUCT_ERROR,
 } from '../actions/types';
 
 const initialState = {
   products: {},
+  women: {},
   product: {},
   loading: true,
   error: {},
@@ -18,6 +20,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         products: action.payload,
+        loading: false,
+      };
+    case GET_WOMENPRODUCTS:
+      return {
+        ...state,
+        women: action.payload,
         loading: false,
       };
     case GET_PRODUCT:

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -18,36 +18,48 @@ const Product = ({ getProduct, setLoading, product, loading, match }) => {
     return <p>loading..</p>;
   } else {
     return (
-      <div className='cards'>
-        <div className='row'>
-          <div className='col-sm'>
-            <div className='card' style={{ width: '20rem' }}>
-              <img src={product.image} className='card-img-top' alt='...' />
-              <div className='card-body'>
-                <div className='card-text'>
-                  <h5 className='card-title'>{product.name}</h5>
-                  <b>Price:</b>€{product.price} <br />
-                  <b>Type:</b> {product.type}
-                  <br />
-                  <b>Size:</b>
-                  {product.size} <br />
-                  <b>Color:</b>
-                  {product.color}
-                  <br />
-                  <br />
-                  {product.description}
-                </div>
-                <div className='user-list'>
-                  <i className='fas fa-heart fa-lg'></i>
-                  {}
-                  {}
-                  <i className='fas fa-shopping-bag fa-lg'></i>
+      <Fragment>
+        <div className='cards'>
+          <div className='row'>
+            <div className='col-sm'>
+              <div className='card' style={{ width: '20rem' }}>
+                <img src={product.image} className='card-img-top' alt='...' />
+                <div className='card-body'>
+                  <div className='card-text'>
+                    <h5 className='card-title'>{product.name}</h5>
+                    <b>Price:</b> €{product.price} <br />
+                    <b>Type:</b> {product.type}
+                    <br />
+                    <b>Size:</b> {product.size} <br />
+                    <b>Material:</b> {product.material} <br />
+                    <b>Color:</b> {product.color}
+                    <br />
+                    <br />
+                    {product.description}
+                  </div>
+                  <div className='user-list'>
+                    <i className='fas fa-heart fa-lg'></i>
+                    {}
+                    {}
+                    <i className='fas fa-shopping-bag fa-lg'></i>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+        <div id='back'>
+          <button
+            type='button'
+            className='btn'
+            onClick={() => history.goBack()}
+          >
+            <i className='fas fa-arrow-circle-left fa-2x'></i>
+            {/* <br />
+            Back */}
+          </button>
+        </div>
+      </Fragment>
     );
   }
 };

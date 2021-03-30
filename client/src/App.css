@@ -68,41 +68,79 @@ nav {
 .product-info {
   text-align: center;
 }
+/* .card-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-.cards {
+.card {
+  width: 18rem;
+}
+
+.cardText {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-list {
+  width: 20%;
+}
+.user-list i {
+  margin-right: 10%;
+} */
+/* .cards {
   padding-top: 5%;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-}
+} */
 
-.col-sm {
+.row {
+  display: flex;
+  justify-content: center;
+}
+.row > * {
+  width: 90%;
+}
+.col-sm-3 {
   display: flex;
   justify-content: center;
   padding-bottom: 2%;
 }
 
-.card {
-  align-self: center;
-}
-
 .card-body {
   display: flex;
-  /* justify-content: space-between; */
   flex-direction: column;
+}
+.card-title {
+  display: flex;
+  justify-content: space-between;
 }
 
 .user-list {
-  align-self: center;
-  width: 30%;
-  padding-top: 5%;
+  width: 20%;
+  align-self: flex-end;
+  justify-self: start;
 }
-
 .user-list i {
   margin-right: 10%;
 }
-/* .user-list > * {
-  padding: 5%;
-} */
+
+#back {
+  display: flex;
+  justify-content: center;
+}
+
+#back i {
+  color: var(--primary-color);
+}
+
+/* 992px */
+@media (min-width: 62em) {
+  .row > * {
+    width: 30%;
+  }
+}

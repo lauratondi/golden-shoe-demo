@@ -1,5 +1,11 @@
 import axios from 'axios';
-import { SET_LOADING, GET_PRODUCTS, GET_PRODUCT, PRODUCT_ERROR } from './types';
+import {
+  SET_LOADING,
+  GET_PRODUCTS,
+  GET_PRODUCT,
+  GET_WOMENPRODUCTS,
+  PRODUCT_ERROR,
+} from './types';
 
 // GET ALL PRODUCTS
 export const getProducts = () => async (dispatch) => {
@@ -42,6 +48,29 @@ export const getProduct = (id) => async (dispatch) => {
     });
   }
 };
+
+// GET WOMEN PRODUTCS
+export const getWomenProducts = () => async (dispatch) => {
+  setLoading(true);
+  try {
+    const res = await axios.get('/api/women/');
+
+    console.log(res.data);
+
+    dispatch({
+      type: GET_WOMENPRODUCTS,
+      payload: res.data,
+      loading: false,
+    });
+  } catch (err) {
+    console.log('Error');
+    dispatch({
+      type: PRODUCT_ERROR,
+      payload: err.response,
+    });
+  }
+};
+
 // Set Loading
 export const setLoading = () => async (dispatch) => {
   dispatch({

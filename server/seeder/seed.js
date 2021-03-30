@@ -4,7 +4,6 @@ const MongoClient = require('mongodb').MongoClient;
 async function seedDB() {
   // Connection URL
   const uri = require('../config').mongoURI;
-  // 'mongodb+srv://lauramars85:goldenshoe@cluster0.qz9z6.mongodb.net/golden-shoe-demo?retryWrites=true&w=majority';
 
   const client = new MongoClient(uri, {
     useNewUrlParser: true,
@@ -18,28 +17,36 @@ async function seedDB() {
     const db = client.db('golden-shoe-demo');
 
     const productCollection = client.db('inventory').collection('products');
-    // const productsMenCollection = client.db('products').collection('men');
-    // const productsWomenCollection = client.db('products').collection('women');
+    // const productsMenCollection = client.db('inventory').collection('men');
+    // const productsWomenCollection = client.db('inventory').collection('women');
 
-    const types = ['Sport', 'Casual', 'Sneaker', 'Heels', 'Flat'];
-
+    const types = [
+      'Sport',
+      'Casual',
+      'Sneaker',
+      'Boots',
+      'Lace-Ups',
+      'Heels',
+      'Flat',
+    ];
+    const gender = ['women', 'man', 'uni-sex'];
+    const name = ['Converse', 'Nike', 'Calvin Klein', 'Gucci', 'Dr. Martens'];
+    const material = ['Leather', 'Textile', 'Synthetic', 'Canvas', 'Rubber'];
     let products = [];
 
     for (let i = 0; i < types.length; i++) {
       let newProduct = {
-        name: faker.commerce.productName(),
+        name: name[Math.floor(Math.random() * name.length)],
         price: faker.commerce.price(),
         color: faker.commerce.color(),
-        material: faker.commerce.productMaterial(),
+        material: material[Math.floor(Math.random() * material.length)],
         size: Math.floor(Math.random() * (49 - 35)) + 35,
-
+        gender: gender[Math.floor(Math.random() * gender.length)],
         type: types[Math.floor(Math.random() * types.length)],
         description: faker.lorem.paragraph(),
         image: ' http://placeimg.com/640/480/shoes',
       };
       products.push(newProduct);
-
-      console.log(newProduct.size);
     }
     // productsMenCollection.insertMany(products);
     // productsWomenCollection.insertMany(products);

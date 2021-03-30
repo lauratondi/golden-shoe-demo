@@ -29,6 +29,7 @@ app.use(express.json({ extended: false }));
 
 // Define routes
 app.use('/api/products', require('./routes/api/products'));
+app.use('/api/women', require('./routes/api/women'));
 
 // Set static folder
 // app.use(express.static('client/build'));

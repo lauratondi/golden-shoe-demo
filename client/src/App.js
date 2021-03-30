@@ -6,6 +6,7 @@ import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
 import Products from './components/products/Products';
 import Product from './components/products/Product';
+import Women from './components/products/Women';
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -21,6 +22,7 @@ const App = () => (
           <Switch>
             <Route exact path='/' component={Products} />
             <Route path='/products/:id' component={Product} />
+            <Route exact path='/women' component={Women} />
           </Switch>
         </div>
       </div>

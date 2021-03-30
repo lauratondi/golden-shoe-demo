@@ -5,7 +5,7 @@ import { getProducts, setLoading } from '../../actions/productActions';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Spinner from '../layout/Spinner';
-import ProductItem from '../products/ProductItem';
+import ProductCarouselItem from '../products/ProductCarouselItem';
 
 const Products = ({ getProducts, setLoading, products, loading }) => {
   useEffect(() => {
@@ -49,7 +49,7 @@ const Products = ({ getProducts, setLoading, products, loading }) => {
           <Carousel responsive={responsive}>
             {products.length > 0
               ? products.map((product, index) => (
-                  <ProductItem key={index} product={product} />
+                  <ProductCarouselItem key={index} product={product} />
                 ))
               : null}
           </Carousel>
