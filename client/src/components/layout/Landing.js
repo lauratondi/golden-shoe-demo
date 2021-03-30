@@ -7,11 +7,6 @@ const Landing = () => {
       <div className='bg-landing'>
         <h3>Catchy Phrase</h3>
       </div>
-      <div className='text-page'>
-        <h5>New Collections</h5>
-      </div>
-
-      <Products />
     </Fragment>
   );
 };

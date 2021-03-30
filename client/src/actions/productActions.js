@@ -25,19 +25,20 @@ export const getProducts = () => async (dispatch) => {
 
 // GET single product
 export const getProduct = (id) => async (dispatch) => {
+  setLoading();
   try {
-    const res = await axios.get(`api/products/${id}`);
+    const res = await axios.get(`/api/products/${id}`);
 
     console.log(res.data);
 
     dispatch({
       type: GET_PRODUCT,
       payload: res.data,
-      loading: false,
     });
   } catch (err) {
     dispatch({
-      payload: { status: err.response.status },
+      type: PRODUCT_ERROR,
+      payload: err.response,
     });
   }
 };

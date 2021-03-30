@@ -39,6 +39,9 @@ const Products = ({ getProducts, setLoading, products, loading }) => {
 
   return (
     <Fragment>
+      <div className='text-page'>
+        <h5>New Collections</h5>
+      </div>
       {loading && products !== null ? (
         <p>Loading...</p>
       ) : (

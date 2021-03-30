@@ -18,15 +18,16 @@ router.get('/', async (req, res) => {
   }
 });
 
-// router.get('/', function (req, res) {
-//   console.log('fetching ');
-//   Product.find(function (err, product) {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       res.json(product);
-//     }
-//   });
-// });
+// @route GET api/products/:id
+router.get('/:id', async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    console.log('Single product fetched');
+    res.json(product);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send('Server error');
+  }
+});
 
 module.exports = router;
