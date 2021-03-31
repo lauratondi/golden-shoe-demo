@@ -8,9 +8,9 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  products: {},
+  products: [],
   product: {},
-  women: {},
+  women: [],
   woman: {},
   loading: true,
   error: {},

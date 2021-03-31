@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getWomenProducts, setLoading } from '../../actions/productActions';
 import WomanItem from './WomanItem';
-import CardGroup from 'react-bootstrap/CardGroup';
-import Card from 'react-bootstrap/Card';
-
+import Filters from '../filters/Filters';
+import getType from '../filters/Filters';
 const Women = ({ getWomenProducts, setLoading, women, loading }) => {
   useEffect(() => {
     getWomenProducts();
@@ -14,14 +13,7 @@ const Women = ({ getWomenProducts, setLoading, women, loading }) => {
   }, []);
 
   const [text, setText] = useState('');
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    setLoading();
-    getWomenProducts(text);
-    setText('');
-  };
-
+  const [typeFilter, setTypeFilter] = useState('');
   const onChange = (e) => setText(e.target.value);
 
   const filterByName = () => {
@@ -32,42 +24,65 @@ const Women = ({ getWomenProducts, setLoading, women, loading }) => {
     });
   };
 
+  const filterByType = () => {
+    const filteredType = women
+      .filter((woman) => {
+        return woman.type !== null && woman.type !== undefined;
+      })
+      .filter((woman) => {
+        var type = woman.type;
+        return type;
+      });
+    if (!this.type) {
+      return women;
+    }
+
+    return filteredType;
+  };
+
+  const filteredShoes = () => {
+    return women.filter((woman) => {
+      return (
+        (text
+          ? woman.name.toLowerCase().indexOf(text.toLowerCase()) !== -1
+          : true) &&
+        (typeFilter.length > 0
+          ? filterByType([women]).filter(
+              (woman) => typeFilter.indexOf(woman) !== -1
+            ).lenght > 0
+          : true)
+      );
+    });
+  };
+
+  console.log(filteredShoes());
   return (
     <Fragment>
       <div className='text-page'>
         <h5>Women</h5>
-      </div>
-      <Fragment>
-        <form onSubmit={onSubmit} className='form'>
-          <i className='fas fa-search fa-2x'></i>
+        <Fragment>
+          <Filters />
+        </Fragment>
+        <Fragment>
+          <i className='fas fa-search fa-lm'></i>{' '}
           <input
             className='formInput'
             type='text'
             name='text'
-            placeholder='Search Movies...'
+            placeholder='Search ...'
             value={text}
             onChange={onChange}
           />
-        </form>
-        {/* <div className='buttons'>
-          <button
-            type='submit'
-            value='Search'
-            className='btn btn-primary'
-            form='form'
-            onClick={onSubmit}
-          >
-            Search
-          </button>
-        </div> */}
-      </Fragment>
+        </Fragment>
+      </div>
+
       {loading && women !== null ? (
         <p>Loading...</p>
       ) : (
         <div className='cards'>
           <div className='row'>
             {women.length > 0
-              ? filterByName(women).map((woman, index) => (
+              ? filteredShoes().map((woman, index) => (
                   <WomanItem key={index} woman={woman} />
                 ))
               : null}
@@ -81,7 +96,7 @@ const Women = ({ getWomenProducts, setLoading, women, loading }) => {
 Women.propTypes = {
   getWomenProducts: PropTypes.func.isRequired,
   setLoading: PropTypes.func.isRequired,
-  women: PropTypes.object.isRequired,
+  women: PropTypes.array.isRequired,
   loading: PropTypes.bool,
 };
 

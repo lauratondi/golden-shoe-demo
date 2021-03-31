@@ -62,7 +62,7 @@ const Products = ({ getProducts, setLoading, products, loading }) => {
 Products.propTypes = {
   getProducts: PropTypes.func.isRequired,
   setLoading: PropTypes.func.isRequired,
-  products: PropTypes.object.isRequired,
+  products: PropTypes.array.isRequired,
   loading: PropTypes.bool,
 };
 

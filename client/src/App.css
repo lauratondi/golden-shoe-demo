@@ -138,6 +138,12 @@ nav {
   color: var(--primary-color);
 }
 
+/* FILTERS */
+.mt-3 {
+  height: 20%;
+  margin-top: 0 !important;
+}
+
 /* 992px */
 @media (min-width: 62em) {
   .row > * {
