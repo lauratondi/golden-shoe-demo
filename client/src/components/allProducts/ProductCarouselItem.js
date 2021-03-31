@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Carousel from 'react-multi-carousel';
 
 const ProductCarouselItem = ({ product }) => {
   return (

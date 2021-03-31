@@ -4,9 +4,10 @@ import './App.css';
 import 'react-multi-carousel/lib/styles.css';
 import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
-import Products from './components/products/Products';
-import Product from './components/products/Product';
-import Women from './components/products/Women';
+import Products from './components/allProducts/Products';
+import Product from './components/allProducts/Product';
+import Women from './components/womenProducts/Women';
+import Woman from './components/womenProducts/Woman';
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -23,6 +24,7 @@ const App = () => (
             <Route exact path='/' component={Products} />
             <Route path='/products/:id' component={Product} />
             <Route exact path='/women' component={Women} />
+            <Route exact path='/women/:id' component={Woman} />
           </Switch>
         </div>
       </div>

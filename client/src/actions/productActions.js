@@ -4,6 +4,7 @@ import {
   GET_PRODUCTS,
   GET_PRODUCT,
   GET_WOMENPRODUCTS,
+  GET_WOMANPRODUCT,
   PRODUCT_ERROR,
 } from './types';
 
@@ -64,6 +65,26 @@ export const getWomenProducts = () => async (dispatch) => {
     });
   } catch (err) {
     console.log('Error');
+    dispatch({
+      type: PRODUCT_ERROR,
+      payload: err.response,
+    });
+  }
+};
+
+// GET single Women product
+export const getWomenProduct = (id) => async (dispatch) => {
+  setLoading();
+  try {
+    const res = await axios.get(`/api/women/${id}`);
+
+    console.log(res.data);
+
+    dispatch({
+      type: GET_WOMANPRODUCT,
+      payload: res.data,
+    });
+  } catch (err) {
     dispatch({
       type: PRODUCT_ERROR,
       payload: err.response,

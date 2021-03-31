@@ -89,14 +89,14 @@ nav {
 .user-list i {
   margin-right: 10%;
 } */
-/* .cards {
+.cards {
   padding-top: 5%;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-} */
+}
 
 .row {
   display: flex;

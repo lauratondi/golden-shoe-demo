@@ -26,8 +26,8 @@ async function seedDB() {
       'Sneaker',
       'Boots',
       'Lace-Ups',
-      'Heels',
-      'Flat',
+      // 'Heels',
+      // 'Flat',
     ];
     const gender = ['women', 'man', 'uni-sex'];
     const name = ['Converse', 'Nike', 'Calvin Klein', 'Gucci', 'Dr. Martens'];
@@ -42,6 +42,7 @@ async function seedDB() {
         material: material[Math.floor(Math.random() * material.length)],
         size: Math.floor(Math.random() * (49 - 35)) + 35,
         gender: gender[Math.floor(Math.random() * gender.length)],
+
         type: types[Math.floor(Math.random() * types.length)],
         description: faker.lorem.paragraph(),
         image: ' http://placeimg.com/640/480/shoes',

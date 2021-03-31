@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import Products from '../products/Products';
 
 const Landing = () => {
   return (

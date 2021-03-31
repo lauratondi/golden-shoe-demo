@@ -3,13 +3,15 @@ import {
   GET_PRODUCTS,
   GET_PRODUCT,
   GET_WOMENPRODUCTS,
+  GET_WOMANPRODUCT,
   PRODUCT_ERROR,
 } from '../actions/types';
 
 const initialState = {
   products: {},
-  women: {},
   product: {},
+  women: {},
+  woman: {},
   loading: true,
   error: {},
 };
@@ -22,16 +24,23 @@ export default (state = initialState, action) => {
         products: action.payload,
         loading: false,
       };
+
+    case GET_PRODUCT:
+      return {
+        ...state,
+        product: action.payload,
+        loading: false,
+      };
     case GET_WOMENPRODUCTS:
       return {
         ...state,
         women: action.payload,
         loading: false,
       };
-    case GET_PRODUCT:
+    case GET_WOMANPRODUCT:
       return {
         ...state,
-        product: action.payload,
+        woman: action.payload,
         loading: false,
       };
     case PRODUCT_ERROR:

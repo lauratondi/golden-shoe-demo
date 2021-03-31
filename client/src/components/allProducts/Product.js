@@ -63,8 +63,6 @@ const Product = ({ getProduct, setLoading, product, loading, match }) => {
     );
   }
 };
-{
-}
 
 Product.propTypes = {
   product: PropTypes.object.isRequired,

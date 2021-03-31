@@ -1,11 +1,11 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getProducts, setLoading } from '../../actions/productActions';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Spinner from '../layout/Spinner';
-import ProductCarouselItem from '../products/ProductCarouselItem';
+import ProductCarouselItem from './ProductCarouselItem';
 
 const Products = ({ getProducts, setLoading, products, loading }) => {
   useEffect(() => {

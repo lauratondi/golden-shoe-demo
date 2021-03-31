@@ -2,7 +2,7 @@ import React, { useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getWomenProducts, setLoading } from '../../actions/productActions';
-import ProductItem from './ProductItem';
+import WomanItem from './WomanItem';
 import CardGroup from 'react-bootstrap/CardGroup';
 import Card from 'react-bootstrap/Card';
 
@@ -21,10 +21,12 @@ const Women = ({ getWomenProducts, setLoading, women, loading }) => {
       {loading && women !== null ? (
         <p>Loading...</p>
       ) : (
-        <div class='cards'>
-          <div class='row'>
+        <div className='cards'>
+          <div className='row'>
             {women.length > 0
-              ? women.map((w, index) => <ProductItem key={index} product={w} />)
+              ? women.map((woman, index) => (
+                  <WomanItem key={index} woman={woman} />
+                ))
               : null}
           </div>
         </div>
