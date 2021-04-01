@@ -12,11 +12,13 @@ const Filters = ({ getWomenProducts, setLoading, women, loading }) => {
   }, []);
   const [typeFilter, setTypeFilter] = useState('');
 
-  const getType = (women = []) => {
-    let type = women.map((woman) => woman.type);
-    type = type.filter((el, index) => type.indexOf(el) === index);
-    // console.log(type);
-    return type;
+  const getType = (women) => {
+    let typeFilter = women.map((woman) => woman.type);
+    typeFilter = typeFilter.filter(
+      (el, index) => typeFilter.indexOf(el) === index
+    );
+    // console.log(typeFilter);
+    return typeFilter;
   };
 
   const onChangeType = (e) => {
