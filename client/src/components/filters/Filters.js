@@ -25,6 +25,31 @@ const Filters = ({ getWomenProducts, setLoading, women, loading }) => {
     setTypeFilter(e.target.value);
   };
 
+  const filterByType = () => {
+    const filteredType = women
+      .filter((woman) => {
+        return woman.type !== null && woman.type !== undefined;
+      })
+      // .filter((woman) => {
+      //   let type = woman.type;
+      //   return typeFilter === type;
+      // });
+      .filter((woman) => {
+        let type = woman.type;
+        if (typeFilter) {
+          return type === typeFilter;
+        }
+      });
+
+    if (!typeFilter || typeFilter === 'Select Type') {
+      return women;
+    }
+
+    return filteredType;
+  };
+
+  console.log(filterByType());
+
   return (
     <div className='filters'>
       <button
@@ -58,37 +83,20 @@ const Filters = ({ getWomenProducts, setLoading, women, loading }) => {
         </div>
         <div className='offcanvas-body'>
           <div className='dropdown mt-3'>
-            <button
-              className='btn dropdown-toggle'
-              type='button'
-              id='dropdownMenuType'
-              data-bs-toggle='dropdown'
-            >
-              Type
-            </button>
-
-            <ul
-              className='dropdown-menu'
-              aria-labelledby='dropdownMenuType'
+            <select
               onChange={onChangeType}
               value={typeFilter}
               name='typeFilter'
             >
+              <option>Select Type</option>
               {women.length &&
                 getType(women).map((typeFilter, index) => (
-                  <li>
-                    <Link
-                      className='dropdown-item'
-                      key={index}
-                      value={typeFilter}
-                      to={'/women'}
-                    >
-                      {''}
-                      {typeFilter}
-                    </Link>
-                  </li>
+                  <option key={index} value={typeFilter}>
+                    {' '}
+                    {typeFilter}
+                  </option>
                 ))}
-            </ul>
+            </select>
           </div>
           <div className='dropdown mt-3'>
             <button

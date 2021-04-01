@@ -7,7 +7,7 @@ import { getWomenProducts, setLoading } from '../../actions/productActions';
 import WomanItem from './WomanItem';
 import Filters from '../filters/Filters';
 // import getType from '../filters/Filters';
-import { getType } from '../../utils/filtersDetail';
+import { getType, getMaterial } from '../../utils/filtersDetail';
 
 const Women = ({ getWomenProducts, setLoading, women, loading }) => {
   useEffect(() => {
@@ -24,6 +24,11 @@ const Women = ({ getWomenProducts, setLoading, women, loading }) => {
     setTypeFilter(e.target.value);
   };
 
+  const [materialFilter, setMaterialFilter] = useState('');
+  const onChangeMaterial = (e) => {
+    setMaterialFilter(e.target.value);
+  };
+
   const filterByName = () => {
     return women.filter((woman) => {
       return text
@@ -34,13 +39,10 @@ const Women = ({ getWomenProducts, setLoading, women, loading }) => {
 
   const filterByType = () => {
     const filteredType = women
-      .filter((woman) => {
-        return woman.type !== null && woman.type !== undefined;
-      })
       // .filter((woman) => {
-      //   let type = woman.type;
-      //   return typeFilter === type;
-      // });
+      //   return woman.type !== null && woman.type !== undefined;
+      // })
+
       .filter((woman) => {
         let type = woman.type;
         if (typeFilter) {
@@ -57,22 +59,21 @@ const Women = ({ getWomenProducts, setLoading, women, loading }) => {
 
   console.log(filterByType());
 
-  // const filteredShoes = () => {
-  //   return women.filter((woman) => {
-  //     return (
-  //       (text
-  //         ? woman.name.toLowerCase().indexOf(text.toLowerCase()) !== -1
-  //         : true) &&
-  //       (typeFilter.length > 0
-  //         ? filterByType([women]).filter(
-  //             (woman) => typeFilter.indexOf(woman) !== -1
-  //           ).lenght > 0
-  //         : true)
-  //     );
-  //   });
-  // };
+  const filterByMaterial = () => {
+    const filteredMaterial = women.filter((woman) => {
+      let material = woman.material;
+      if (materialFilter) {
+        return material === materialFilter;
+      }
+    });
+    if (!materialFilter || materialFilter === 'Select Material') {
+      return women;
+    }
+    return filteredMaterial;
+  };
 
-  // console.log(filteredShoes());
+  console.log(filterByMaterial());
+
   return (
     <Fragment>
       <div className='text-page'>
@@ -125,34 +126,20 @@ const Women = ({ getWomenProducts, setLoading, women, loading }) => {
                   </select>
                 </div>
                 <div className='dropdown mt-3'>
-                  <button
-                    className='btn dropdown-toggle'
-                    type='button'
-                    id='dropdownMenuButton'
-                    data-bs-toggle='dropdown'
+                  <select
+                    onChange={onChangeMaterial}
+                    value={materialFilter}
+                    name='materialFilter'
                   >
-                    Material
-                  </button>
-                  <ul
-                    className='dropdown-menu'
-                    aria-labelledby='dropdownMenuButton'
-                  >
-                    <li>
-                      <a className='dropdown-item' href='#'>
-                        Action
-                      </a>
-                    </li>
-                    <li>
-                      <a className='dropdown-item' href='#'>
-                        Another action
-                      </a>
-                    </li>
-                    <li>
-                      <a className='dropdown-item' href='#'>
-                        Something else here
-                      </a>
-                    </li>
-                  </ul>
+                    <option>Select Material</option>
+                    {women.length &&
+                      getMaterial(women).map((materialFilter, index) => (
+                        <option key={index} value={materialFilter}>
+                          {' '}
+                          {materialFilter}
+                        </option>
+                      ))}
+                  </select>
                 </div>
               </div>
             </div>
@@ -177,7 +164,7 @@ const Women = ({ getWomenProducts, setLoading, women, loading }) => {
         <div className='cards'>
           <div className='row'>
             {women.length > 0
-              ? filterByType().map((woman, index) => {
+              ? filterByMaterial().map((woman, index) => {
                   return <WomanItem key={index} woman={woman} />;
                 })
               : null}
