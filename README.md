@@ -17,4 +17,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 Backend built with Node.js and MongoDB, seeded with faker.
 Front-end built with React functional component, Bootstrapt, HTML, CSS, Redux for state managment.
 
-MongoDB | Node.js | Fakeer | React | Redux | Bootstrap | CSS | HTML5
+MongoDB | Node.js | Fakeer | React | Redux | Axios | Bootstrap | CSS | HTML5
