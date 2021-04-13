@@ -33,7 +33,7 @@ nav {
 }
 
 #container {
-  margin-top: 50px !important;
+  /* margin-top: 50px !important; */
   width: 100vw;
   height: 100vh;
   padding: 0% !important;
@@ -147,8 +147,8 @@ nav {
 /* Toggles footer */
 .toggles {
   width: 100%;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  padding-top: 10%;
+  padding-bottom: 10%;
   display: flex;
   justify-content: space-around;
 }
