@@ -10,7 +10,7 @@ import {
 
 // GET ALL PRODUCTS
 export const getProducts = () => async (dispatch) => {
-  setLoading(true);
+  setLoading();
   try {
     const res = await axios.get('/api/products/');
 
@@ -52,7 +52,7 @@ export const getProduct = (id) => async (dispatch) => {
 
 // GET WOMEN PRODUTCS
 export const getWomenProducts = () => async (dispatch) => {
-  setLoading(true);
+  setLoading();
   try {
     const res = await axios.get('/api/women/');
 
