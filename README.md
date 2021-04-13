@@ -18,3 +18,6 @@ Backend built with Node.js and MongoDB, seeded with faker.
 Front-end built with React functional component, Bootstrapt, HTML, CSS, Redux for state managment.
 
 MongoDB | Node.js | Fakeer | React | Redux | Axios | Bootstrap | CSS | HTML5
+
+## Info about the App
+This is a demo app for an online shoe shop built with a Mobile-First approach.
