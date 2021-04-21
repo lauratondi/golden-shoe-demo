@@ -2,17 +2,18 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const seeder = require('./seeder/seed');
+
 // DB configuration and interaction with our MongoDb database
 const mongoose = require('mongoose');
-
-const db = require('./config').mongoURI;
+// const db = require('./config').mongoURI;
+const config = require('config');
+const db = config.get('mongoURI');
 
 // I initialize the app with Express
 const app = express();
 
-// // Test
+// Test
 app.get('/', (req, res) => res.send('API Running'));
-// app.get('/api/products', (req, res) => res.send('API Running'));
 
 // Connect to Mongo
 mongoose
@@ -30,6 +31,9 @@ app.use(express.json({ extended: false }));
 // Define routes
 app.use('/api/products', require('./routes/api/products'));
 app.use('/api/women', require('./routes/api/women'));
+app.use('/api/users', require('./routes/api/users'));
+app.use('/api/auth', require('./routes/api/auth'));
+app.use('/api/profile', require('./routes/api/profile'));
 
 // Set static folder
 // app.use(express.static('client/build'));

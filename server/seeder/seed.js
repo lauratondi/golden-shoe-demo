@@ -3,7 +3,9 @@ const MongoClient = require('mongodb').MongoClient;
 
 async function seedDB() {
   // Connection URL
-  const uri = require('../config').mongoURI;
+  // const uri = require('../config').mongoURI;
+  const config = require('config');
+  const uri = config.get('mongoURI');
 
   const client = new MongoClient(uri, {
     useNewUrlParser: true,
@@ -16,8 +18,8 @@ async function seedDB() {
 
     const db = client.db('golden-shoe-demo');
 
-    const productCollection = client.db('inventory').collection('products');
-    // const productsMenCollection = client.db('inventory').collection('men');
+    // const productCollection = client.db('inventory').collection('products');
+    const productsMenCollection = client.db('inventory').collection('men');
     // const productsWomenCollection = client.db('inventory').collection('women');
 
     const types = [
@@ -29,7 +31,7 @@ async function seedDB() {
       // 'Heels',
       // 'Flat',
     ];
-    const gender = ['women', 'man', 'uni-sex'];
+    // const gender = ['women', 'man', 'uni-sex'];
     const name = ['Converse', 'Nike', 'Calvin Klein', 'Gucci', 'Dr. Martens'];
     const material = ['Leather', 'Textile', 'Synthetic', 'Canvas', 'Rubber'];
     let products = [];
@@ -41,7 +43,8 @@ async function seedDB() {
         color: faker.commerce.color(),
         material: material[Math.floor(Math.random() * material.length)],
         size: Math.floor(Math.random() * (49 - 35)) + 35,
-        gender: gender[Math.floor(Math.random() * gender.length)],
+        gender: 'man',
+        // gender[Math.floor(Math.random() * gender.length)],
 
         type: types[Math.floor(Math.random() * types.length)],
         description: faker.lorem.paragraph(),
@@ -49,9 +52,9 @@ async function seedDB() {
       };
       products.push(newProduct);
     }
-    // productsMenCollection.insertMany(products);
+    productsMenCollection.insertMany(products);
     // productsWomenCollection.insertMany(products);
-    productCollection.insertMany(products);
+    // productCollection.insertMany(products);
     console.log('Database seeded');
     client.close();
   } catch (err) {
