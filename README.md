@@ -3,11 +3,11 @@
 ## Instructions:<br/>
 To run the application, you need to install the dependencies by running the following command:
 
-<i>npm install</i> <br/>
+<i>`npm install`</i> <br/>
 
 In the project directory, you can run:
 
-<i>npm run dev</i> <br/>
+<i>`npm run dev`</i> <br/>
 
 Front-end and Back-end will run together.
 
